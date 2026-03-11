@@ -181,7 +181,7 @@ export function JourneySection() {
                 <p className="text-gray-500 mt-2">Sep 2014 — Sep 2017</p>
              </div>
              <div className="pl-6 md:pl-0">
-                <p className="text-xl text-gray-600 font-light">Associate's degree, Information Technology / Digital Media</p>
+                 <p className="text-xl text-gray-600 font-light">Associate&apos;s degree, Information Technology / Digital Media</p>
              </div>
            </div>
         </div>

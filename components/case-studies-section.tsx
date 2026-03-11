@@ -159,7 +159,7 @@ export function CaseStudiesSection() {
         {/* Footer CTA */}
         <div className="mt-32 pt-20 border-t border-gray-200/60 animate-fade-in text-center" style={{ animationDelay: '0.8s' }}>
            <h3 className="text-3xl font-light text-gray-800 mb-6">
-              Let's build something <span className="font-medium text-gradient-teal">amazing</span> together.
+              Let&apos;s build something <span className="font-medium text-gradient-teal">amazing</span> together.
            </h3>
            <Link 
               href="/contact"

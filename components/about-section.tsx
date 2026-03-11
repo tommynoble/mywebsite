@@ -40,7 +40,7 @@ export function AboutSection() {
           {/* Detailed Bio */}
           <div className="space-y-6 text-xl text-gray-600 font-light leading-relaxed">
             <p>
-              I'm a designer based in Herndon, Virginia, with 8+ years of experience in UI/UX and Prompt Engineering. Starting out as a visual designer, my journey into AI has shaped a holistic approach to creating intelligent products.
+              I&apos;m a designer based in Herndon, Virginia, with 8+ years of experience in UI/UX and Prompt Engineering. Starting out as a visual designer, my journey into AI has shaped a holistic approach to creating intelligent products.
             </p>
             <p>
               I specialize in bridging the gap between human needs and AI capabilities, crafting systems that unlock new possibilities while maintaining exceptional usability and trust.

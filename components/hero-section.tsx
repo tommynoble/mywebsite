@@ -19,7 +19,7 @@ export function HeroSection() {
         {/* Header */}
         <div className="mb-8 animate-fade-in">
           <h1 className="text-xl md:text-xl lg:text-2xl text-gray-700 mb-2">
-            Hello, I'm <span className="font-semibold">Thomas</span>
+            Hello, I&apos;m <span className="font-semibold">Thomas</span>
           </h1>
         </div>
 
@@ -80,7 +80,7 @@ export function HeroSection() {
               asChild
               className="px-8 py-3"
             >
-              <Link href="/contact">Let's Connect</Link>
+              <Link href="/contact">Let&apos;s Connect</Link>
             </Button>
           </div>
 

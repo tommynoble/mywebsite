@@ -38,7 +38,7 @@ export function Footer() {
         {/* Main heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight whitespace-normal mb-8">
-            Let's connect
+            Let&apos;s connect
           </h2>
         </div>
 

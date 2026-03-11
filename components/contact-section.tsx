@@ -53,10 +53,10 @@ export function ContactSection() {
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-gray-700 max-w-4xl">
             Have a project in mind?{" "}
-            <span className="text-gradient-teal">Let's talk.</span>
+            <span className="text-gradient-teal">Let&apos;s talk.</span>
           </h2>
           <p className="mt-8 text-xl text-gray-600 font-light max-w-2xl leading-relaxed">
-            I'm always open to new opportunities, collaborations, and conversations. Drop me a message and I'll get back to you within 24 hours.
+            I&apos;m always open to new opportunities, collaborations, and conversations. Drop me a message and I&apos;ll get back to you within 24 hours.
           </p>
         </motion.div>
 
