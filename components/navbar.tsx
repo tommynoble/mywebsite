@@ -11,9 +11,8 @@ const navigation = [
   { name: "home", href: "/", icon: Home },
   { name: "about", href: "/about", icon: User },
   { name: "journey", href: "/journey", icon: Briefcase },
-  { name: "services", href: "/services", icon: FileText },
   { name: "work", href: "/work", icon: Briefcase },
-  { name: "contact", href: "/contact", icon: Mail },
+  { name: "connect", href: "/contact", icon: Mail },
 ]
 
 const socialLinks = [

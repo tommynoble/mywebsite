@@ -1,28 +1,19 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
-import { Mail, Phone, MapPin, Calendar, MessageSquare, Zap, Clock, CheckCircle } from "lucide-react"
 import { useState } from "react"
+import { motion } from "framer-motion"
+import { Mail, MapPin, ArrowRight, Github, Linkedin } from "lucide-react"
 import { toast } from "sonner"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    projectType: '',
-    budget: '',
-    timeline: '',
     message: ''
   })
-
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
@@ -30,325 +21,177 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    toast.success("Message sent successfully! I'll get back to you within 24 hours.")
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      projectType: '',
-      budget: '',
-      timeline: '',
-      message: ''
-    })
+    await new Promise(resolve => setTimeout(resolve, 1500))
+    toast.success("Message sent! I'll get back to you within 24 hours.")
+    setFormData({ name: '', email: '', message: '' })
     setIsSubmitting(false)
   }
 
-  const consultationTypes = [
-    {
-      title: "AI Strategy Session",
-      duration: "45 min",
-      price: "Free",
-      description: "Discover how AI can enhance your design process",
-      features: ["AI readiness assessment", "Tool recommendations", "Strategy roadmap", "Q&A session"],
-      popular: false
-    },
-    {
-      title: "Prompt Engineering Workshop",
-      duration: "2 hours",
-      price: "$500",
-      description: "Hands-on training for your team in prompt engineering",
-      features: ["Custom prompt development", "Tool training", "Best practices", "Resource library"],
-      popular: true
-    },
-    {
-      title: "Design System Audit",
-      duration: "1.5 hours",
-      price: "$750",
-      description: "Comprehensive review of your design system's AI potential",
-      features: ["System analysis", "AI integration plan", "Component recommendations", "Implementation roadmap"],
-      popular: false
-    }
-  ]
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 lg:px-20 xl:px-32">
-      <div className="max-w-5xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Let's Create Something Amazing
+    <section id="contact" className="min-h-screen py-24 px-6 md:px-12 xl:px-32 bg-gradient-connect-light">
+      <div className="max-w-5xl mx-auto w-full">
+
+        {/* Page Header — matches Journey/About style */}
+        <motion.div {...fadeInUp} className="mb-8">
+          <h1 className="text-xl md:text-xl lg:text-2xl text-gray-700 mb-2">
+            Say <span className="font-semibold">Hello</span>
+          </h1>
+        </motion.div>
+
+        {/* Impact Statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          className="mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-gray-700 max-w-4xl">
+            Have a project in mind?{" "}
+            <span className="text-gradient-teal">Let's talk.</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your design process with AI? Let's discuss your project and explore 
-            how we can achieve your goals together.
+          <p className="mt-8 text-xl text-gray-600 font-light max-w-2xl leading-relaxed">
+            I'm always open to new opportunities, collaborations, and conversations. Drop me a message and I'll get back to you within 24 hours.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Contact Form */}
-          <div className="lg:col-span-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                  <MessageSquare className="text-teal-600" size={28} />
-                  Start Your Project
-                </CardTitle>
-                <p className="text-gray-600">
-                  Tell me about your project and I'll get back to you within 24 hours.
+        {/* Main Grid */}
+        <div className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
+
+          {/* Left Column — Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="space-y-10"
+          >
+            <div className="space-y-6">
+              <div>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Email</p>
+                <a
+                  href="mailto:thomas@thomasboye.com"
+                  className="text-lg text-gray-800 font-light hover:text-teal-600 transition-colors"
+                >
+                  thomas@thomasboye.com
+                </a>
+              </div>
+              <div className="border-t border-gray-200/60" />
+              <div>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Location</p>
+                <p className="text-lg text-gray-800 font-light flex items-center gap-2">
+                  <MapPin size={16} className="text-gray-400" />
+                  Herndon, Virginia
                 </p>
-              </CardHeader>
-              
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Name *
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Your full name"
-                        className="h-12"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email *
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="your@email.com"
-                        className="h-12"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company
-                    </label>
-                    <Input
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      placeholder="Your company name"
-                      className="h-12"
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-2">
-                        Project Type
-                      </label>
-                      <select
-                        id="projectType"
-                        name="projectType"
-                        value={formData.projectType}
-                        onChange={handleInputChange}
-                        className="w-full h-12 px-3 border border-input rounded-md bg-transparent text-sm"
-                      >
-                        <option value="">Select project type</option>
-                        <option value="ai-prompt-engineering">AI Prompt Engineering</option>
-                        <option value="ux-design">UX Design</option>
-                        <option value="design-system">Design System</option>
-                        <option value="team-training">Team Training</option>
-                        <option value="consulting">Strategy Consulting</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
-                        Budget Range
-                      </label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleInputChange}
-                        className="w-full h-12 px-3 border border-input rounded-md bg-transparent text-sm"
-                      >
-                        <option value="">Select budget range</option>
-                        <option value="under-5k">Under $5,000</option>
-                        <option value="5k-15k">$5,000 - $15,000</option>
-                        <option value="15k-30k">$15,000 - $30,000</option>
-                        <option value="30k-plus">$30,000+</option>
-                        <option value="discuss">Let's discuss</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-2">
-                      Timeline
-                    </label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleInputChange}
-                      className="w-full h-12 px-3 border border-input rounded-md bg-transparent text-sm"
-                    >
-                      <option value="">Select timeline</option>
-                      <option value="asap">ASAP</option>
-                      <option value="1-month">Within 1 month</option>
-                      <option value="2-3-months">2-3 months</option>
-                      <option value="flexible">Flexible</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Project Details *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Tell me about your project, goals, and any specific requirements..."
-                      rows={6}
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    variant="gradient" 
-                    size="lg" 
-                    className="w-full"
-                    disabled={isSubmitting}
+              </div>
+              <div className="border-t border-gray-200/60" />
+              <div>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Elsewhere</p>
+                <div className="flex gap-5">
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray-500 hover:text-gray-900 transition-colors"
+                    aria-label="GitHub"
                   >
+                    <Github size={20} />
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/thomas-boye-asante-6241a7145"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray-500 hover:text-teal-600 transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin size={20} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column — Minimal Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-8">
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="group">
+                  <label htmlFor="name" className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Your name"
+                    className="w-full bg-transparent border-0 border-b border-gray-200 pb-3 text-lg text-gray-800 font-light placeholder:text-gray-300 focus:outline-none focus:border-teal-400 transition-colors"
+                  />
+                </div>
+
+                <div className="group">
+                  <label htmlFor="email" className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="your@email.com"
+                    className="w-full bg-transparent border-0 border-b border-gray-200 pb-3 text-lg text-gray-800 font-light placeholder:text-gray-300 focus:outline-none focus:border-teal-400 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows={5}
+                  placeholder="Tell me about your project..."
+                  className="w-full bg-transparent border-0 border-b border-gray-200 pb-3 text-lg text-gray-800 font-light placeholder:text-gray-300 focus:outline-none focus:border-teal-400 transition-colors resize-none"
+                />
+              </div>
+
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full overflow-hidden transition-all duration-300 disabled:opacity-60"
+                >
+                  <div className="absolute inset-0 bg-gray-900 group-hover:bg-teal-600 transition-colors duration-300" />
+                  <span className="relative text-white font-bold text-lg">
                     {isSubmitting ? "Sending..." : "Send Message"}
-                    {!isSubmitting && <Mail size={20} className="ml-2" />}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
+                  </span>
+                  {!isSubmitting && (
+                    <ArrowRight size={20} className="relative text-white group-hover:translate-x-1 transition-transform duration-300" />
+                  )}
+                </button>
+              </div>
 
-          {/* Contact Info & Consultations */}
-          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            {/* Contact Info */}
-            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-gray-800">
-                  Get in Touch
-                </CardTitle>
-              </CardHeader>
-              
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-teal-100 rounded-lg">
-                    <Mail size={20} className="text-teal-600" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-800">Email</div>
-                    <div className="text-gray-600">thomas@thomasboye.com</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-100 rounded-lg">
-                    <Phone size={20} className="text-purple-600" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-800">Phone</div>
-                    <div className="text-gray-600">+1 (555) 123-4567</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <MapPin size={20} className="text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-800">Location</div>
-                    <div className="text-gray-600">Herndon, Virginia</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-100 rounded-lg">
-                    <Clock size={20} className="text-green-600" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-800">Response Time</div>
-                    <div className="text-gray-600">Within 24 hours</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Consultation Options */}
-            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-gray-800 flex items-center gap-3">
-                  <Calendar className="text-teal-600" size={24} />
-                  Book a Consultation
-                </CardTitle>
-                <p className="text-gray-600 text-sm">
-                  Schedule a focused session to discuss your specific needs.
-                </p>
-              </CardHeader>
-              
-              <CardContent className="space-y-4">
-                {consultationTypes.map((consultation, index) => (
-                  <div 
-                    key={consultation.title}
-                    className="border rounded-lg p-4 hover:border-teal-300 transition-colors cursor-pointer relative"
-                  >
-                    {consultation.popular && (
-                      <Badge variant="currently" className="absolute -top-2 -right-2 px-2 py-0.5 text-xs">
-                        Popular
-                      </Badge>
-                    )}
-                    
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-gray-800">{consultation.title}</h4>
-                      <div className="text-right">
-                        <div className="font-bold text-teal-600">{consultation.price}</div>
-                        <div className="text-xs text-gray-500">{consultation.duration}</div>
-                      </div>
-                    </div>
-                    
-                    <p className="text-sm text-gray-600 mb-3">{consultation.description}</p>
-                    
-                    <div className="space-y-1">
-                      {consultation.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-2 text-xs text-gray-600">
-                          <CheckCircle size={12} className="text-green-500" />
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-                
-                <Button variant="outline" className="w-full mt-4">
-                  <Calendar size={16} className="mr-2" />
-                  Schedule Consultation
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+            </form>
+          </motion.div>
         </div>
+
       </div>
     </section>
   )
